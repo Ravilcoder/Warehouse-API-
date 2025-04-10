@@ -1,19 +1,31 @@
 package com.warehouse.controller;
 
-import java.util.List;
 import com.warehouse.model.Product;
 import com.warehouse.service.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("/product")
-@CrossOrigin(origins = "*")
+@RequestMapping("/api/products")
 public class ProductController {
+    @Autowired
+    private ProductService productService;
 
-    private final ProductService productService;
+    @PostMapping
+    public Product addProduct(@RequestBody Product product) {
+        return productService.addProduct(product);
+    }
 
-    public ProductController(ProductService productService) {
-        this.productService = productService;
+    @PutMapping("/{id}")
+    public Product updateProduct(@PathVariable Long id, @RequestBody Product product) {
+        return productService.updateProduct(id, product);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteProduct(@PathVariable Long id) {
+        productService.deleteProduct(id);
     }
 
     @GetMapping
@@ -21,13 +33,8 @@ public class ProductController {
         return productService.getAllProducts();
     }
 
-    @PostMapping
-    public Product addProduct(@RequestBody Product product) {
-        return productService.addProduct(product);
-    }
-
-    @DeleteMapping("/{id}")
-    public void deleteProduct(@PathVariable Long id) {
-        productService.deleteProduct(id);
+    @PutMapping("/{id}/move/{warehouseId}")
+    public void moveProduct(@PathVariable Long id, @PathVariable Long warehouseId) {
+        productService.moveProduct(id, warehouseId);
     }
 }

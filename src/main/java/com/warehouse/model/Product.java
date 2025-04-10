@@ -8,12 +8,12 @@ import lombok.*;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstruct
+@AllArgsConstructor
 @ToString
 public class Product {
 
     @Id
-    @GeneratedValue(stratagy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private int quantity;
