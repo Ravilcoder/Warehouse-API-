@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Склад</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<h1>Управление складом</h1>
+
+<h2>Добавить товар</h2>
+<input id="productName" placeholder="Название">
+<input id="productQuantity" type="number" placeholder="Количество">
+<input id="productVolume" type="number" step="0.1" placeholder="Объем">
+<input id="productWarehouseId" type="number" placeholder="ID склада">
+<button onclick="addProduct()">Добавить</button>
+
+<h2>Добавить склад</h2>
+<input id="warehouseName" placeholder="Название">
+<input id="warehouseLocation" placeholder="Место">
+<input id="warehouseCapacity" type="number" step="0.1" placeholder="Объем">
+<button onclick="addWarehouse()">Добавить</button>
+
+<h2>Список товаров</h2>
+<div id="products"></div>
+
+<h2>Список складов</h2>
+<div id="warehouses"></div>
+
+<h2>Поиск складов по товару</h2>
+<input id="searchProductName" placeholder="Название товара">
+<button onclick="searchWarehouses()">Найти</button>
+<div id="searchResults"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
